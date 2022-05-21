@@ -11,7 +11,7 @@
 <body>
     <div id="body">
     <?php
-session_start();
+
 require_once "includes/funcoes.php";
 require_once "includes/banco.php";
 require_once "includes/login.php";
@@ -26,7 +26,7 @@ require_once "includes/login.php";
     echo msg_sucesso("A Paz do Senho:" . $nome);
         $q = "INSERT INTO `pedidos`( `nome`, `urgencia`, `pedido`) VALUES ('$nome','$urgencia', '$pedido') ";
         $busca = $banco->query($q);
-            if ($busca->num_rows > 0){
+            if ($busca){
                 $reg = $busca->fetch_object();
                 
                

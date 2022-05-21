@@ -11,21 +11,22 @@
 <body>
     <div id="body">
     <?php
-session_start();
+
 require_once "includes/funcoes.php";
 require_once "includes/banco.php";
 require_once "includes/login.php";
+include "topo.php";
 
      $nome = $_POST['nome'] ?? null;
      $pedido = $_POST['pedido'] ?? null;
-     $testemunho = $_POST['testemulho'] ?? null;
+     $testemunho = $_POST['testemunho'] ?? null;
      $urgencia = $_POST['tipo'] ?? null;
     
 ?>
      <?php 
     echo msg_sucesso("A Paz do Senho:" . $nome);
     if ($nome) {
-        $q = "INSERT INTO `testemunhos`( `nome`, `testemunho`) VALUES ('$nome','$testemunho'); ";
+        $q = "INSERT INTO `testemunhos` ( `nome`, `testemunho`) VALUES ('$nome','$testemunho')";
         $busca = $banco->query($q);
         $reg = $busca->fetch_object();
         $reg = $busca->fetch_object();

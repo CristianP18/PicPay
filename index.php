@@ -11,9 +11,7 @@
 <body>
     <div id="body">
     <?php include "topo.php";
-    require_once "includes/funcoes.php";
-    require_once "includes/banco.php";
-    require_once "includes/login.php"; ?>
+     ?>
         <h1> Seja Bem Vindo!!!</h1>
         <form action="pedido.php" method="post">
         <tr><td><h2> Digite seu Pediso de Oração!</h2>

@@ -23,6 +23,8 @@ require_once "includes/login.php";
             </style>
 <body>
     <div id="body">
+
+
         <?php 
         $u = $_POST['usuario'] ?? null;
         $s = $_POST['senha'] ?? null;
@@ -45,6 +47,7 @@ require_once "includes/login.php";
                         $_SESSION['tipo'] = $reg->tipo;
                         echo msg_sucesso('Logado com sucesso');
                         echo "Bem Vindo: " .  $_SESSION['nome'];
+                        
                      }else {
                          
                             echo msg_error('Senha inválida');
@@ -57,7 +60,22 @@ require_once "includes/login.php";
                 }
                 
                 }}
-        echo voltar();
+                echo "Bem Vindo:   <strong> " . $_SESSION['nome'] . "</strong> |";
+                echo"<p class='pequeno'>";
+                if(empty($_SESSION['user'])){
+                    echo "<a href='user-login-form.php'>Entrar</a> |";
+                }else {
+                   
+                    echo $_SESSION['tipo']. " | ";
+                    echo "<a href='user-logout.php'>Sair</a> | ";
+                    echo "<a href='user-edit-form.php'>Meu Dados</a> | ";
+                    if (is_admin()) {
+                        echo "<a href='user-new-form.php'>Novo usuário</a> | ";
+                        
+                    } 
+                }
+                echo"</p>";
+        echo voltar2();
         ?>
     </div>
 </body>

@@ -11,6 +11,12 @@
             arrow_back_ios </span></a>";
             
         }
+        function voltar2() {
+          return "<a href='pedidoDeOraçao.php'><span class='material-symbols-outlined'>
+          arrow_back_ios </span></a>";
+          
+      }
+        
       function msg_sucesso($m) {
           $resp = "<div class='sucesso'><i
           class='material-symbols-outlined'>check_circle</i>$m</div>";

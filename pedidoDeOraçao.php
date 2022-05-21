@@ -10,6 +10,8 @@
 </head>
 <body>
     <?php 
+
+
     require_once "includes/funcoes.php";
     require_once "includes/banco.php";
     require_once "includes/login.php";
@@ -19,25 +21,25 @@
     ?>
     <div id="body">
     <?php include "topo.php"; ?>
-    <h1>Escolha seu jogo</h1>
+    <h1>Pedidos de Oração!!!</h1>
 		
 		<form method="get" action="pedidoDeOraçao.php">
-		<p class= "pequeno"> Ordenar: <a href="index.php?o=n">Nome |</a> <a href="index.php?o=d">Distribuidora |</a> <a href="index.php?o=n1">Nota Alta |</a> <a href="index.php?o=n2">Nota Baixa |</a> Buscar:<input type="text" name="c" size="10" maxlength="40"/><input type="submit" value="Ok"/></p>
+		<p class= "pequeno"> Ordenar: <a href="pedidoDeOraçao.php?o=n">Nome |</a> <a href="pedidoDeOraçao.php?o=d">Urgência |</a> <a href="pedidoDeOraçao.php?o=n1">+ Recentes|</a> <a href="pedidoDeOraçao.php?o=n2">+ Antigos |</a> Buscar:<input type="text" name="c" size="10" maxlength="40"/><input type="submit" value="Ok"/></p>
 		</form>
 		<table class="listagem">
 			<?php
 				$q = "SELECT * from pedidos ";
 				if (!empty($chave)) {
-					$q .= " WHERE j.nome like '%$chave%' OR p.produtora like '%$chave%' OR g.genero like '%$chave%'";
+					$q .= " WHERE nome like '%$chave%' OR urgencia like '%$chave%' OR pedido like '%$chave%'";
 				}
 				switch ($ordem) {
 					case "d":
 						$q .= " ORDER BY urgencia";
 						break;
-					case "n1":
+					case "n2":
 						$q .= " ORDER BY cod DESC";
 						break;
-					case "n2":
+					case "n1":
 						$q .= " ORDER BY cod ASC";
 						break;
 					default:

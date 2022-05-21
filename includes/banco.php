@@ -1,6 +1,6 @@
 <pre><?php
 
-$banco = new mysqli("localhost", "root", "", "bd_pedidos");
+$banco = new mysqli('mysql.meusimulador.com', 'meusimulador3', '@Meusimulador@', 'meusimulador3');
 if($banco->connect_errno){
     echo "<p>Encontrei um erro $banco->errno --> $banco->connect_error</p>";
     die();
