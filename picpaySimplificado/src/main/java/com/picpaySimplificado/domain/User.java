@@ -38,11 +38,16 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    public void User(UserDTO data){
-        this.fistName = data.fistName();
+    // Construtor vazio necessário para JPA
+    public User() {
+    }
+
+    // Construtor para criar um usuário a partir de um DTO
+    public User(UserDTO data) {
+        this.firstName = data.fistName(); // Corrigido o acesso aos métodos get
         this.lastName = data.lastName();
-        this.balance - data.balance();
-        this.userType = data.usertype();
+        this.balance = data.balance();
+        this.userType = data.userType();
         this.password = data.password();
         this.email = data.email();
     }

@@ -28,8 +28,8 @@ public class TransactionService {
     private RestTemplate restTemplate;
 
     public void createTransaction(TransactionDTO transaction) throws Throwable {
-        User sender = this.userService.findUserById(transaction.senderId());
-        User receiver = this.userService.findUserById(transaction.receiverId());
+        User sender = (User) this.userService.findUserById(transaction.senderId());
+        User receiver = (User) this.userService.findUserById(transaction.receiverId());
 
         userService.validateTransaction(sender, transaction.value());
 
