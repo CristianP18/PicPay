@@ -1,4 +1,4 @@
-package com.picpaySimplificado.UserService;
+package com.picpaySimplificado.Service;
 
 import java.math.BigDecimal;
 
