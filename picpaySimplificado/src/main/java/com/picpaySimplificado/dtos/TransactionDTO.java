@@ -1,0 +1,11 @@
+package com.picpaySimplificado.dtos;
+
+import java.math.BigDecimal;
+
+public record TransactionDTO(BigDecimal value, Long receiverId) {
+
+    public Long senderId() {
+        return null;
+    }
+    
+}
