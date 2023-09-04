@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.picpaySimplificado.domain.User;
 import com.picpaySimplificado.domain.UserType;
+import com.picpaySimplificado.dtos.UserDTO;
 import com.picpaySimplificado.repositories.UserRepository;
 @Service
 public class UserService {
     @Autowired
     private UserRepository repository;
+
 
     public void validateTransaction(User sender, BigDecimal amount) throws Exception{
         if(sender.getUserType() == UserType.MERCHANT){
@@ -24,6 +26,11 @@ public class UserService {
 
     public User findUserById(Long id) throws Throwable{
         return (User) this.repository.findUserById(id).orElseThrow(() -> new Exception("Usuário não encontrado"));
+
+    }
+    public User createUser(UserDTO data){
+        User newUser = new User(data);
+        this.saveUser(newUser);
 
     }
     public void saveUser(User user){
