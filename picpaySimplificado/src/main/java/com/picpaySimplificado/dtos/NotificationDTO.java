@@ -20,6 +20,7 @@ public class NotificationDTO {
 
         ResponseEntity<String> notificationResponse = restTemplate.postForEntity(
                 "http://04d9z.mocklab.io/notify",
+                
                 notificationRequest,
                 String.class);
 

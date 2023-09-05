@@ -29,7 +29,7 @@ public class TransactionService {
 
     private NotificationService notificationService;
 
-    public com.picpaySimplificado.controllers.Transaction createTransaction(TransactionDTO transaction) throws Throwable {
+    public Transaction createTransaction(TransactionDTO transaction) throws Throwable {
         User sender = (User) this.userService.findUserById(transaction.senderId());
         User receiver = (User) this.userService.findUserById(transaction.receiverId());
 
