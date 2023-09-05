@@ -28,7 +28,7 @@ public class ExceptionDTO {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity threatGeneralException(EntityNotFoundException exception){
          ExceptionDTO exceptionDTO = new ExceptionDTO(exception.getMessage(), "500");
-          return ResponseEntity.internalServerErro().body(exeptionDTO);
+          return ResponseEntity.internalServerError().body(exceptionDTO);
 
     }
 }
