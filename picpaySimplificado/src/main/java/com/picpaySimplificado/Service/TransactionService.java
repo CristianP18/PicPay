@@ -27,7 +27,9 @@ public class TransactionService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public void createTransaction(TransactionDTO transaction) throws Throwable {
+    private NotificationService notificationService;
+
+    public com.picpaySimplificado.controllers.Transaction createTransaction(TransactionDTO transaction) throws Throwable {
         User sender = (User) this.userService.findUserById(transaction.senderId());
         User receiver = (User) this.userService.findUserById(transaction.receiverId());
 
@@ -50,6 +52,12 @@ public class TransactionService {
         transactionRepository.save(newTransaction); // Corrigido o nome do repositório
         userService.saveUser(sender); // Corrigido o método
         userService.saveUser(receiver); // Corrigido o método
+
+        this.notificationService.sendNotification(sender, "Transação enviada com sucesso");
+        
+        this.notificationService.sendNotification(receiver, "Transação recebida com sucesso");      
+        
+        return createTransaction(null);
     }
 
     public boolean authorizeTransaction(User sender, BigDecimal value) {

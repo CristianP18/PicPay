@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.picpaySimplificado.Service.UserService;
 import com.picpaySimplificado.domain.User;
+import com.picpaySimplificado.dtos.UserDTO;
 
 @RestController
 @RequestMapping("/users") // Use @RequestMapping para mapear o caminho base da classe
@@ -22,8 +23,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User newUser = userService.createUser(user);
+    public ResponseEntity<User> createUser(@RequestBody UserDTO user) {
+        User newUser = userService.createUserTDO(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 

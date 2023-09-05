@@ -16,7 +16,10 @@ public class UserService {
     private UserRepository repository;
 
     public void validateTransaction(User sender, BigDecimal amount) throws Exception {
-        // Implemente sua lógica de validação de transação aqui
+         // Verifique se o remetente tem saldo suficiente para a transação
+    if (sender.getBalance().compareTo(amount) < 0) {
+        throw new Exception("Saldo insuficiente para realizar a transação.");
+    }
     }
 
     public Object findUserById(Long id) throws Throwable {
@@ -29,11 +32,12 @@ public class UserService {
      * @param user O DTO contendo os dados do usuário.
      * @return O novo usuário criado e salvo.
      */
-    public User createUser(UserDTO user) {
-        final User newUser = new User(user);
-        this.saveUser(newUser);
-        return newUser;
-    }
+  public User createUserTDO(UserDTO userDto) {
+    User newUser = new User(userDto);
+    this.saveUser(newUser);
+    return newUser;
+}
+
 
     public List<User> getAllUsers() {
         return this.repository.findAll();
@@ -42,4 +46,6 @@ public class UserService {
     public void saveUser(User user) {
         this.repository.save(user);
     }
+
+   
 }

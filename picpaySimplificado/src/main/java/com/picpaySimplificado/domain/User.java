@@ -15,12 +15,14 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity(name = "users")
 @Table(name = "users")
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class User {
@@ -38,9 +40,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    // Construtor vazio necessário para JPA
-    public User() {
-    }
+  
 
     // Construtor para criar um usuário a partir de um DTO
     public User(UserDTO data) {
@@ -50,5 +50,6 @@ public class User {
         this.userType = data.userType();
         this.password = data.password();
         this.email = data.email();
+        this.document = data.document();
     }
 }
